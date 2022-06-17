@@ -2,3 +2,71 @@
 mode: train
 root: data/
 predefined_dataset: VOCDetection
+classes:
+  [
+    "aeroplane",
+    "bicycle",
+    "bird",
+    "boat",
+    "bottle",
+    "bus",
+    "car",
+    "cat",
+    "chair",
+    "cow",
+    "diningtable",
+    "dog",
+    "horse",
+    "motorbike",
+    "person",
+    "pottedplant",
+    "sheep",
+    "sofa",
+    "train",
+    "tvmonitor",
+  ]
+max_samples: null
+batch_size: 32
+num_workers: 0
+device: cuda
+anchors: null
+n_clusters: 6
+image_size: 416
+
+# transforms configuration
+transforms_config:
+  train:
+    albumentations.RandomResizedCrop:
+      height: 416
+      width: 416
+    albumentations.HorizontalFlip: null
+    albumentations.GaussNoise: null
+    albumentations.GaussianBlur: null
+    albumentations.MotionBlur: null
+    albumentations.ColorJitter:
+      hue: 0.
+
+  val:
+    albumentations.Resize:
+      height: 416
+      width: 416
+
+  test:
+    albumentations.Resize:
+      height: 416
+      width: 416
+
+  predict:
+    albumentations.Resize:
+      height: 416
+      width: 416
+
+# target transforms configuration
+target_transforms_config:
+  train: null
+
+  val: null
+
+  test: null
+
+  predict: null
